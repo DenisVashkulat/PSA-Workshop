@@ -112,7 +112,12 @@
           <label>Год<input placeholder="Год выпуска"></label>
           <label>Тип документа<select><option>Все документы</option><option>Электрическая схема</option><option>Распиновка разъёма</option><option>Расположение компонентов</option><option>Предохранители и реле</option></select></label>
         </div>
-        <div class="empty-state"><span>⌁</span><strong>База схем ещё не подключена</strong><p>Здесь будут отображаться документы с указанием модели, года, двигателя и источника.</p></div>
+        <div id="wiringLinks" class="resource-list live-sources">
+          <a href="https://szervizdoksi.hu/citroen/sedre.html#/" target="_blank" rel="noopener"><strong>Открыть Citroën SEDRE ↗</strong><span>Электросхемы Citroën. Выберите тип автомобиля и OPR-код, если сервис их запрашивает.</span></a>
+          <a href="https://szervizdoksi.hu/" target="_blank" rel="noopener"><strong>Открыть портал Szervizdoksi ↗</strong><span>Документация Peugeot / Citroën. Доступность разделов зависит от самого сервиса.</span></a>
+          <a href="https://public.servicebox-parts.com/" target="_blank" rel="noopener"><strong>Официальный Stellantis Service Box ↗</strong><span>Заводские документы и схемы; часть материалов доступна по подписке.</span></a>
+        </div>
+        <div class="notice"><div class="notice-icon">i</div><div><strong>Схема должна совпадать с автомобилем</strong><p>Перед работой сверяйте поколение, двигатель, дату выпуска и OPR. Ссылки открывают внешние базы, а не локальную копию схем.</p></div></div>
       </div>
     </div>
   </section>
@@ -129,7 +134,12 @@
           <button class="primary-button" type="submit">Найти <span>→</span></button>
         </form>
         <div id="partsResult" class="result-message" role="status"></div>
-        <div class="empty-state"><span>⚙</span><strong>Каталог запчастей готовится к подключению</strong><p>Номера деталей и применяемость будут показываться только по подтверждённым каталожным данным.</p></div>
+        <div id="partsLinks" class="resource-list live-sources">
+          <a href="https://7zap.com/ru/catalog/cars/peugeot/" target="_blank" rel="noopener"><strong>Каталог Peugeot на 7zap ↗</strong><span>Выбор модели, поколения, узла и деталировочного рисунка.</span></a>
+          <a href="https://7zap.com/ru/catalog/cars/citroen/" target="_blank" rel="noopener"><strong>Каталог Citroën на 7zap ↗</strong><span>Выбор модели и просмотр групп деталей.</span></a>
+          <a href="https://public.servicebox-parts.com/" target="_blank" rel="noopener"><strong>Оригинальный каталог Stellantis ↗</strong><span>Проверяйте OEM-номер и применяемость по заводскому источнику.</span></a>
+        </div>
+        <p class="form-help">Для поиска по номеру или названию используйте кнопку «Найти»: сайт подготовит поиск по выбранной марке. VIN-подбор пока не подтверждается автоматически.</p>
       </div>
     </div>
   </section>
