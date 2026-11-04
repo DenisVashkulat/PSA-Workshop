@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10151d">
+  <meta name="description" content="PSA Workshop — рабочее пространство для поиска технической информации Peugeot, Citroën и DS.">
+  <title>PSA Workshop — техническая база</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#home" aria-label="PSA Workshop — главная">
+        <span class="brand-mark">PSA</span>
+        <span><strong>WORKSHOP</strong><small>TECHNICAL DATABASE</small></span>
+      </a>
+      <div class="side-label">РАБОЧЕЕ МЕСТО</div>
+      <nav class="navigation" aria-label="Основная навигация">
+        <a class="nav-link active" href="#home" data-section="home"><span>⌂</span> Обзор</a>
+        <a class="nav-link" href="#vehicle" data-section="vehicle"><span>▣</span> Автомобиль / VIN</a>
+        <a class="nav-link" href="#wiring" data-section="wiring"><span>⌁</span> Электросхемы</a>
+        <a class="nav-link" href="#parts" data-section="parts"><span>⚙</span> Каталог запчастей</a>
+        <a class="nav-link" href="#technical" data-section="technical"><span>▤</span> Тех. информация</a>
+        <a class="nav-link" href="#resources" data-section="resources"><span>↗</span> Источники данных</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="status-dot"></div>
+        <div><strong>PSA Workshop</strong><small>Первая версия · 0.1.0</small></div>
+      </div>
+    </aside>
+
+    <main class="main-content" id="home">
+      <header class="topbar">
+        <button class="menu-button" id="menuButton" aria-label="Открыть меню">☰</button>
+        <div class="breadcrumb">Рабочее место <span>/</span> <strong id="currentPage">Обзор</strong></div>
+        <div class="topbar-right"><span class="live-indicator"></span> Локальный интерфейс</div>
+      </header>
+
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> PEUGEOT · CITROËN · DS AUTOMOBILES</div>
+          <h1>Техническая база<br><span>для вашей мастерской.</span></h1>
+          <p>Поиск доступной технической информации, электросхем и деталей для автомобилей концерна PSA.</p>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="art-ring ring-one"></div><div class="art-ring ring-two"></div>
+          <div class="art-center">PSA<span>WORKSHOP</span></div>
+          <div class="art-chip chip-one">WIRING</div><div class="art-chip chip-two">PARTS</div><div class="art-chip chip-three">VIN</div>
+        </div>
+      </section>
+
+      <section class="search-panel" aria-labelledby="vinHeading">
+        <div class="panel-heading">
+          <div><div class="eyebrow">БЫСТРЫЙ ДОСТУП</div><h2 id="vinHeading">Поиск автомобиля по VIN</h2></div>
+          <span class="panel-icon">⌕</span>
+        </div>
+        <form id="vinForm" class="vin-form">
+          <label class="sr-only" for="vinInput">VIN автомобиля</label>
+          <input id="vinInput" name="vin" type="text" maxlength="17" autocomplete="off" placeholder="Введите 17-значный VIN автомобиля" aria-describedby="vinHelp">
+          <button class="primary-button" type="submit">Проверить VIN <span>→</span></button>
+        </form>
+        <div class="form-help" id="vinHelp">VIN состоит из 17 символов. Буквы I, O и Q не используются.</div>
+        <div id="vinResult" class="result-message" role="status" aria-live="polite"></div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-title"><div><div class="eyebrow">РАЗДЕЛЫ БАЗЫ</div><h2>Инструменты мастерской</h2></div><span class="muted">Выберите нужный раздел</span></div>
+        <div class="module-grid">
+          <a class="module-card" href="#wiring" data-section="wiring"><div class="module-icon orange">⌁</div><div class="module-meta">01 / ЭЛЕКТРИКА</div><h3>Электросхемы</h3><p>Схемы цепей, разъёмы, блоки и предохранители.</p><span class="card-arrow">Открыть раздел →</span></a>
+          <a class="module-card" href="#parts" data-section="parts"><div class="module-icon blue">⚙</div><div class="module-meta">02 / КАТАЛОГ</div><h3>Подбор запчастей</h3><p>Поиск деталей, оригинальные номера и аналоги.</p><span class="card-arrow">Открыть раздел →</span></a>
+          <a class="module-card" href="#technical" data-section="technical"><div class="module-icon purple">▤</div><div class="module-meta">03 / ДАННЫЕ</div><h3>Тех. информация</h3><p>Характеристики, жидкости, обслуживание и затяжки.</p><span class="card-arrow">Открыть раздел →</span></a>
+          <a class="module-card" href="#vehicle" data-section="vehicle"><div class="module-icon green">▣</div><div class="module-meta">04 / АВТОМОБИЛЬ</div><h3>Карточка автомобиля</h3><p>Выбор марки, модели, поколения и двигателя.</p><span class="card-arrow">Открыть раздел →</span></a>
+        </div>
+      </section>
+
+      <section class="notice">
+        <div class="notice-icon">i</div>
+        <div><strong>О достоверности данных</strong><p>Сейчас это начальная версия интерфейса. Заводские схемы, каталожные номера и технические параметры будут добавляться только при наличии проверяемого источника. Результат проверки формата VIN не является расшифровкой комплектации.</p></div>
+      </section>
+      <footer>PSA WORKSHOP <span>·</span> Независимый справочный проект. Не является продуктом Stellantis.</footer>
+    </main>
+  </div>
+
+  <section class="content-section" id="vehicle">
+    <div class="content-wrap">
+      <a class="back-link" href="#home">← На главную</a>
+      <div class="eyebrow">01 / ИДЕНТИФИКАЦИЯ</div><h1>Автомобиль <span>и VIN</span></h1>
+      <p class="section-intro">Выберите автомобиль вручную или введите VIN. Автоматическая расшифровка комплектации появится после подключения проверенного источника данных.</p>
+      <form id="vehicleForm" class="data-panel">
+        <div class="field-grid">
+          <label>Марка<select id="make"><option value="">Выберите марку</option><option>Peugeot</option><option>Citroën</option><option>DS Automobiles</option></select></label>
+          <label>Модель<input id="model" placeholder="Например, 308, C5, DS7"></label>
+          <label>Поколение / год<input id="year" placeholder="Например, 2015"></label>
+          <label>Двигатель<input id="engine" placeholder="Например, 1.6 HDi"></label>
+        </div>
+        <button class="primary-button" type="submit">Сохранить выбор <span>→</span></button>
+        <div id="vehicleResult" class="result-message" role="status"></div>
+      </form>
+    </div>
+  </section>
+
+  <section class="content-section" id="wiring">
+    <div class="content-wrap">
+      <a class="back-link" href="#home">← На главную</a>
+      <div class="eyebrow">02 / ЭЛЕКТРИКА</div><h1>Электрические <span>схемы</span></h1>
+      <p class="section-intro">Раздел для поиска электрических схем, расположения компонентов и распиновок.</p>
+      <div class="data-panel">
+        <div class="field-grid">
+          <label>Модель<input placeholder="Например, Peugeot 308"></label>
+          <label>Система<select><option>Выберите систему</option><option>Система запуска и зарядки</option><option>Освещение</option><option>Двигатель и впрыск</option><option>ABS / ESP</option><option>Комфорт и кузов</option><option>Мультимедиа</option></select></label>
+          <label>Год<input placeholder="Год выпуска"></label>
+          <label>Тип документа<select><option>Все документы</option><option>Электрическая схема</option><option>Распиновка разъёма</option><option>Расположение компонентов</option><option>Предохранители и реле</option></select></label>
+        </div>
+        <div class="empty-state"><span>⌁</span><strong>База схем ещё не подключена</strong><p>Здесь будут отображаться документы с указанием модели, года, двигателя и источника.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section" id="parts">
+    <div class="content-wrap">
+      <a class="back-link" href="#home">← На главную</a>
+      <div class="eyebrow">03 / ЗАПЧАСТИ</div><h1>Каталог <span>запчастей</span></h1>
+      <p class="section-intro">Поиск по VIN, оригинальному номеру PSA или названию детали.</p>
+      <div class="data-panel">
+        <form id="partsForm" class="vin-form">
+          <label class="sr-only" for="partQuery">Запрос запчасти</label>
+          <input id="partQuery" placeholder="VIN, OEM-номер или название детали">
+          <button class="primary-button" type="submit">Найти <span>→</span></button>
+        </form>
+        <div id="partsResult" class="result-message" role="status"></div>
+        <div class="empty-state"><span>⚙</span><strong>Каталог запчастей готовится к подключению</strong><p>Номера деталей и применяемость будут показываться только по подтверждённым каталожным данным.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section" id="technical">
+    <div class="content-wrap">
+      <a class="back-link" href="#home">← На главную</a>
+      <div class="eyebrow">04 / ТЕХНИЧЕСКИЕ ДАННЫЕ</div><h1>Техническая <span>информация</span></h1>
+      <p class="section-intro">Справочные данные по ремонту и обслуживанию Peugeot, Citroën и DS.</p>
+      <div class="module-grid compact">
+        <div class="module-card static-card"><div class="module-icon orange">↻</div><h3>Обслуживание</h3><p>Интервалы и регламенты ТО.</p></div>
+        <div class="module-card static-card"><div class="module-icon blue">◉</div><h3>Жидкости</h3><p>Типы и объёмы технических жидкостей.</p></div>
+        <div class="module-card static-card"><div class="module-icon purple">⌁</div><h3>Моменты затяжки</h3><p>Заводские значения для узлов и агрегатов.</p></div>
+        <div class="module-card static-card"><div class="module-icon green">▤</div><h3>Характеристики</h3><p>Двигатели, коробки передач и системы.</p></div>
+      </div>
+      <div class="notice"><div class="notice-icon">i</div><div><strong>Пока нет подключённых технических документов</strong><p>Не используйте неподтверждённые значения при ремонте. Для каждого параметра будет указан источник и применимость.</p></div></div>
+    </div>
+  </section>
+
+  <section class="content-section" id="resources">
+    <div class="content-wrap">
+      <a class="back-link" href="#home">← На главную</a>
+      <div class="eyebrow">05 / ИСТОЧНИКИ</div><h1>Источники <span>данных</span></h1>
+      <p class="section-intro">Справочные ресурсы. Доступность отдельных разделов может зависеть от регистрации, региона и условий использования.</p>
+      <div class="resource-list">
+        <a href="https://public.servicebox.peugeot.com/" target="_blank" rel="noopener"><strong>Peugeot Service Box</strong><span>Официальная техническая информация Peugeot ↗</span></a>
+        <a href="https://service.citroen.com/" target="_blank" rel="noopener"><strong>Citroën Service</strong><span>Официальный портал Citroën ↗</span></a>
+        <a href="https://www.catcar.info/" target="_blank" rel="noopener"><strong>Catcar</strong><span>Каталожная информация по запчастям ↗</span></a>
+      </div>
+    </div>
+  </section>
+  <script src="app.js"></script>
+</body>
+</html>
