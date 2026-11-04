@@ -11,6 +11,17 @@ function normalizeVin(value) {
   return value.toUpperCase().replace(/\s+/g, "");
 }
 
+function getSavedVehicle() {
+  try { return JSON.parse(sessionStorage.getItem("psaWorkshopVehicle") || "null"); }
+  catch (_) { return null; }
+}
+
+function getCatalogUrl(make) {
+  if (make === "Peugeot") return "https://7zap.com/ru/catalog/cars/peugeot/";
+  if (make === "Citroën") return "https://7zap.com/ru/catalog/cars/citroen/";
+  return "https://7zap.com/";
+}
+
 $("#vinInput")?.addEventListener("input", (event) => {
   event.target.value = normalizeVin(event.target.value).replace(/[^A-HJ-NPR-Z0-9]/g, "");
 });
@@ -52,7 +63,26 @@ $("#partsForm")?.addEventListener("submit", (event) => {
     showMessage("#partsResult", "Введите VIN, оригинальный номер или название детали.", "error");
     return;
   }
-  showMessage("#partsResult", "Запрос принят: «" + query + "». Для поиска реальных применяемостей требуется подключить каталог запчастей.");
+  const vehicle = getSavedVehicle();
+  const make = vehicle?.make || "";
+  const catalogUrl = getCatalogUrl(make);
+  const searchUrl = "https://www.google.com/search?q=" + encodeURIComponent("site:7zap.com " + (make ? make + " " : "") + query);
+  const result = $("#partsResult");
+  result.textContent = "";
+  const message = document.createElement("p");
+  message.textContent = "Поиск подготовлен для запроса: «" + query + "». Сверяйте применяемость по VIN/OPR в оригинальном каталоге.";
+  const catalog = document.createElement("a");
+  catalog.href = catalogUrl;
+  catalog.target = "_blank";
+  catalog.rel = "noopener";
+  catalog.textContent = "Открыть каталог " + (make || "Peugeot / Citroën") + " на 7zap ↗";
+  const search = document.createElement("a");
+  search.href = searchUrl;
+  search.target = "_blank";
+  search.rel = "noopener";
+  search.textContent = "Искать запрос в 7zap ↗";
+  result.append(message, catalog, document.createTextNode(" · "), search);
+  result.style.color = "#5ac49b";
 });
 
 const pageNames = {
